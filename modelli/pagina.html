@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prenotazione laboratori – $titolo_settimana</title>
+  <link rel="stylesheet" href="/static/stile.css">
+</head>
+<body>
+  <header class="testata">
+    <h1>Prenotazione laboratori</h1>
+    <nav class="schede" aria-label="Laboratori">
+      $schede_laboratori
+    </nav>
+  </header>
+
+  <main class="impaginato">
+    <section class="agenda" aria-labelledby="titolo-agenda">
+      <div class="agenda-testa">
+        <div>
+          <h2 id="titolo-agenda">$laboratorio_corrente</h2>
+          <p class="periodo">$titolo_settimana</p>
+        </div>
+        <nav class="navigazione" aria-label="Settimane">
+          $navigazione
+        </nav>
+      </div>
+
+      $messaggio
+
+      <div class="calendario-scorrevole">
+        $calendario
+      </div>
+      <p class="nota">Seleziona una fascia libera del calendario per precompilare il modulo.</p>
+
+      <h2>Sessioni della settimana</h2>
+      $elenco_sessioni
+    </section>
+
+    <aside class="pannello">
+      <section id="nuova" aria-labelledby="titolo-nuova">
+        <h2 id="titolo-nuova">Nuova sessione</h2>
+        <form class="modulo" method="post" action="/prenota">
+          <input type="hidden" name="settimana" value="$settimana_corrente">
+
+          <label for="laboratorio">Laboratorio</label>
+          <select id="laboratorio" name="laboratorio">
+            $opzioni_laboratori
+          </select>
+
+          <label for="giorno">Giorno</label>
+          <input id="giorno" name="giorno" type="date" required
+                 min="$giorno_min" max="$giorno_max" value="$valore_giorno">
+
+          <div class="coppia">
+            <div>
+              <label for="inizio">Dalle</label>
+              <select id="inizio" name="inizio">
+                $opzioni_inizio
+              </select>
+            </div>
+            <div>
+              <label for="fine">Alle</label>
+              <select id="fine" name="fine">
+                $opzioni_fine
+              </select>
+            </div>
+          </div>
+
+          <label for="docente">Docente</label>
+          <input id="docente" name="docente" type="text" required
+                 autocomplete="name" value="$valore_docente">
+
+          <label for="allievi">Allievi</label>
+          <input id="allievi" name="allievi" type="number" min="1"
+                 required value="$valore_allievi">
+
+          <label for="argomento">Argomento <span class="facoltativo">(facoltativo)</span></label>
+          <input id="argomento" name="argomento" type="text" value="$valore_argomento">
+
+          <button type="submit">Prenota</button>
+        </form>
+      </section>
+
+      <section id="ricerca" aria-labelledby="titolo-ricerca">
+        <h2 id="titolo-ricerca">Cerca laboratori liberi</h2>
+
+        <form class="modulo" method="get" action="/libere">
+          <label for="giorno-ricerca">Giorno</label>
+          <input id="giorno-ricerca" name="giorno" type="date" required
+                 value="$valore_giorno_ricerca">
+
+          <div class="coppia">
+            <div>
+              <label for="inizio-ricerca">Dalle</label>
+              <select id="inizio-ricerca" name="inizio">
+                $opzioni_inizio_ricerca
+              </select>
+            </div>
+            <div>
+              <label for="fine-ricerca">Alle</label>
+              <select id="fine-ricerca" name="fine">
+                $opzioni_fine_ricerca
+              </select>
+            </div>
+          </div>
+
+          <label for="persone-ricerca">Allievi</label>
+          <input id="persone-ricerca" name="persone" type="number" min="1" required
+                 value="$valore_persone_ricerca">
+
+          <span class="etichetta">Dotazioni richieste</span>
+          $caselle_dotazioni
+
+          <button type="submit">Cerca laboratori liberi</button>
+        </form>
+
+        <div class="esito-ricerca">
+          $risultati_ricerca
+        </div>
+      </section>
+    </aside>
+  </main>
+</body>
+</html>

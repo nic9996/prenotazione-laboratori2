@@ -1,0 +1,40 @@
+[
+  {
+    "codice": "B1",
+    "nome": "Panificazione",
+    "postazioni": 8,
+    "dotazioni": [
+      "forno a platea",
+      "impastatrice"
+    ]
+  },
+  {
+    "codice": "C1",
+    "nome": "Cucina calda",
+    "postazioni": 16,
+    "dotazioni": [
+      "forno combinato",
+      "abbattitore",
+      "induzione"
+    ]
+  },
+  {
+    "codice": "F1",
+    "nome": "Laboratorio freddo",
+    "postazioni": 10,
+    "dotazioni": [
+      "abbattitore",
+      "affettatrice"
+    ]
+  },
+  {
+    "codice": "P1",
+    "nome": "Pasticceria",
+    "postazioni": 12,
+    "dotazioni": [
+      "forno a platea",
+      "abbattitore",
+      "planetaria"
+    ]
+  }
+]
