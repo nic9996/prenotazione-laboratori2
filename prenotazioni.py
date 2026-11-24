@@ -228,7 +228,7 @@ class Sessione:
                 raise ValueError(
                     f"L'orario {testo} non è multiplo di {PASSO_MINUTI} minuti"
                 )
-        if minuto_inizio <= orario_in_minuti(APERTURA):
+        if minuto_inizio < orario_in_minuti(APERTURA):
             raise ValueError(f"Il centro di formazione apre alle {APERTURA}")
         if minuto_fine > orario_in_minuti(CHIUSURA):
             raise ValueError(f"Il centro di formazione chiude alle {CHIUSURA}")
