@@ -49,3 +49,13 @@ class TestSessione(unittest.TestCase):
             "LAB001", date(2026, 11, 18), "09:00", "11:30", "Giovanni", 12
         )
         self.assertTrue(sessione_a.si_sovrappone(sessione_d))
+
+    def test_invariabilita_permanenza(self):
+        # `from_dict(x.to_dict())` ricostruisce una sessione equivalente, compreso l'id.
+        sessione_a = Sessione(
+            "LAB001", date(2026, 11, 18), "09:00", "12:30", "Giovanni", 12
+        )
+        sessione_a.id = 3
+        sessione_b = Sessione.from_dict(sessione_a.to_dict())
+        self.assertEqual(sessione_a.id, sessione_b.id)
+        self.assertEqual(sessione_a.to_dict(), sessione_b.to_dict())
