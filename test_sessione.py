@@ -18,3 +18,8 @@ class TestSessione(unittest.TestCase):
         for inizio, fine in orari_non_ammessi:
             with self.assertRaises(ValueError):
                 Sessione("LAB001", date(2026, 11, 18), inizio, fine, "Giovanni", 12)
+                
+    def test_data_non_ammessa(self):
+        # il costruttore solleva TypeError se il giorno	non	è un date
+        with self.assertRaises(TypeError):
+            Sessione("LAB001", "2026, 11, 18", "08:00", "10:00", "Giovanni", 12)
