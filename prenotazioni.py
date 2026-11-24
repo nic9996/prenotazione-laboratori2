@@ -420,7 +420,7 @@ class Centro:
             raise ValueError("La sessione è già registrata")
         laboratorio = self.laboratorio(sessione.laboratorio_codice)
         self._verifica_data(sessione.giorno, oggi)
-        if sessione.allievi >= laboratorio.postazioni:
+        if sessione.allievi > laboratorio.postazioni:
             raise PostazioniInsufficienti(
                 f"Il laboratorio {laboratorio.codice} ha "
                 f"{laboratorio.postazioni} postazioni"
